@@ -2,10 +2,11 @@ require('dotenv').config()
 const express = require('express')
 const connectDB = require('./server/db/connect')
 const authRouter = require('./server/routes/authRoutes')
+const cors = require('cors')
 
 const app = express();
 
-
+app.use(cors())
 app.use(express.json())
 app.use('/api/v1/vtc', authRouter)
 
