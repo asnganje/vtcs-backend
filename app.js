@@ -1,9 +1,13 @@
 require('dotenv').config()
 const express = require('express')
-const app = express();
 const connectDB = require('./server/db/connect')
+const authRouter = require('./server/routes/authRoutes')
+
+const app = express();
+
 
 app.use(express.json())
+app.use('/api/v1/vtc', authRouter)
 
 const port = process.env.PORT;
 const url = process.env.MONGO_URI;
