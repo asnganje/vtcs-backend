@@ -3,6 +3,7 @@ const express = require('express')
 const app = express();
 const connectDB = require('./server/db/connect')
 
+app.use(express.json())
 
 const port = process.env.PORT;
 const url = process.env.MONGO_URI;
