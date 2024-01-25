@@ -21,7 +21,7 @@ const login = async (req,res) => {
 
     const user = await User.findOne({email})
     if(user) {
-    const isValid = (user.comparePassword(password))
+    const isValid = await user.comparePassword(password)
     if(isValid) {
         res.status(200).json({
             status: 'success',
@@ -36,7 +36,7 @@ const login = async (req,res) => {
     } else {
         res.status(404).json({
             status: 'fail',
-            msg: 'User not found'
+            msg: 'Sorry, There is no such a User'
         })
     }
     
