@@ -30,16 +30,15 @@ const login = async (req,res) => {
     } else {
         res.status(404).json({
             status: 'fail',
-            msg: 'Incorrect password'
+            msg: 'Invalid password'
         })
     }
     } else {
         res.status(404).json({
-            status: 'fail',
-            msg: 'Sorry, There is no such a User'
+            status:'fail',
+            msg: 'Invalid email'
         })
-    }
-    
+    }     
 }
 
 const logout = async (req,res) => {
