@@ -17,14 +17,14 @@ const addVTC = async (req,res) => {
 
 const getAllVTCs = async (req,res) => {
     try {
-        const vtcs = Centre.find({})
+        const vtcs = await Centre.find({})
         res.status(200).json({
             status: 'success',
             msg: vtcs
         })
     } catch (error) {
         res.status(404).json({
-            status: 'fail',
+            status: 'failure',
             msg: error
         })        
     }
@@ -32,7 +32,7 @@ const getAllVTCs = async (req,res) => {
 
 const getVTC = async (req,res) => {
     try {
-        const vtc = Centre.find(req.body)
+        const vtc = await Centre.find(req.body)
         res.status(200).json({
             status: 'success',
             msg: vtc
@@ -46,9 +46,9 @@ const getVTC = async (req,res) => {
 }
 
 const updateVTC = async (req,res) => {
-    const {email} = req.body 
+    const {email, ...rest} = req.body 
     try {
-        const vtc = await Centre.findOneAndUpdate({email}, req.body, {
+        const vtc = await Centre.findOneAndUpdate({email}, rest, {
             new: true,
             runValidators: true
         })
