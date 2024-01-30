@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const CentreSchema = new mongoose({
+const CentreSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'please provide vtc name']
