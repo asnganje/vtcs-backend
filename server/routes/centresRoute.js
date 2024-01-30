@@ -2,8 +2,8 @@ const express = require('express')
 const router = express.Router()
 const { addVTC, getAllVTCs, updateVTC, deleteVTC, getVTC } = require('../controllers/vtcentreController')
 
-router.route('/').post(addVTC).get(getAllVTCs).delete(deleteVTC)
+router.route('/centre').post(addVTC).get(getAllVTCs).delete(deleteVTC).patch(updateVTC)
 
-router.route('/:id').patch(updateVTC).get(getVTC)
+router.route('/centre/:id').get(getVTC)
 
 module.exports = router;
