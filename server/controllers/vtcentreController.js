@@ -1,6 +1,7 @@
 const Centre = require("../models/Centre")
 
 const addVTC = async (req,res) => {
+
     try {
         const vtc = await Centre.create(req.body)
         res.status(201).json({
@@ -65,9 +66,9 @@ const updateVTC = async (req,res) => {
     }
 }
 
-const deleteVTC = async (req,res) => {
+const deleteVTC = async (req, res) => {
     try {
-        Centre.findOneAndDelete(req.body)
+        await Centre.findOneAndDelete(req.body)
         res.status(200).json({
             status: 'success'
         })
